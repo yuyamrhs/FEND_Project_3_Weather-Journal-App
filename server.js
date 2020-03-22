@@ -51,6 +51,21 @@ const data =[];
 
 app.post('/add', addData);
 
+function addData (res, req) {
+    let newData = req.body;
+    let newEntry = {
+        temp: newData.temp,
+        date: newData.date,
+        input: newData.input,
+        zip: newData.zip
+    }
+    console.log('Posted data = ' + newEntry[0]);
+
+    projectData.push(newEntry)
+    res.send(projectData);
+    console.log(projectData)
+}
+
 /*
 function addData (req, res) {
     data.push(req.body);
@@ -58,7 +73,7 @@ function addData (req, res) {
 }
 */
 
-
+/*
 function addData (req, res) {
     let data = req.body;
     projectData["temperature"] = data.temperature;
@@ -67,4 +82,4 @@ function addData (req, res) {
     data.push(req.body);
     console.log(data);
 };
-
+*/
