@@ -2,8 +2,8 @@
 
 // Personal API Key for OpenWeatherMap API
 
-let baseURL = 'api.openweathermap.org/data/2.5/weather?zip='
-let apiKey = '20f97877f6c23a060b2bc99fbad88f6'
+let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip='
+let apiKey = '&appid=20f97877f6c23a060b2bc99fbad88f6e'
 
 /*
 API call:
@@ -23,8 +23,8 @@ function performAction(e){
 
 /* Function to GET Web API Data*/
 
-const getZip = async (baseURL, zip, key) => {
-    const res = await fetch(baseURL + zip + key)
+const getZip = async (baseURL, newZip, apiKey) => {
+    const res = await fetch(baseURL + newZip + apiKey)
     try {
         const data = await res.json();
         console.log(data)
@@ -61,11 +61,5 @@ const postData = async ( url = '', data = {})=>{
         }
 }
 
-.then(function(data){
-    console.log(data);
-    postData('/add', {temp: data.temp, date: data.date, input: input})
-}
-
-)
 
 
