@@ -47,39 +47,22 @@ app.get('/all', function (req, res) {
 
 // Post Route
 
-const data =[];
+const weatherData =[];
 
 app.post('/add', addData);
 
 function addData (res, req) {
-    let newData = req.body;
+    console.log(req.body)
     let newEntry = {
-        temp: newData.temp,
-        date: newData.date,
-        input: newData.input,
-        zip: newData.zip
+        temp: req.body.main.temp,
+        date: req.body.date,
+        input: req.body.input,
+        zip: req.body.zip
     }
     console.log('Posted data = ' + newEntry[0]);
 
     projectData.push(newEntry)
-    res.send(projectData);
-    console.log(projectData)
+    res.send(weatherData);
+    console.log(weatherData)
 }
 
-/*
-function addData (req, res) {
-    data.push(req.body);
-    console.log(data);
-}
-*/
-
-/*
-function addData (req, res) {
-    let data = req.body;
-    projectData["temperature"] = data.temperature;
-    projectData["date"] = data.date;
-    projectData["user response"] = data.userResponse;
-    data.push(req.body);
-    console.log(data);
-};
-*/

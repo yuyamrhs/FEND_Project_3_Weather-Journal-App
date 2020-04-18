@@ -5,11 +5,6 @@
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip='
 let apiKey = '&appid=20f97877f6c23a060b2bc99fbad88f6e'
 
-/*
-API call:
-api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={your api key}
-*/
-
 // Event listener to add function to existing HTML DOM element
 
 document.getElementById('generate').addEventListener('click', performAction);
@@ -17,8 +12,19 @@ document.getElementById('generate').addEventListener('click', performAction);
 /* Function called by event listener */
 
 function performAction(e){
+    // Select the actual value of an HTML input to include in POST
+    const feelings = document.getElementById('feelings').value;
+
+    // an API call
     const newZip = document.getElementById('zip').value;
     getZip(baseURL, newZip, apiKey)
+    // New Syntax!
+    .then(function(data){
+        console.log(data)
+      // Add data to POST request
+      postData('/add', {temp:data.main.temp, date:newDate, input:feelings});
+    })
+
 }
 
 /* Function to GET Web API Data*/
@@ -60,6 +66,3 @@ const postData = async ( url = '', data = {})=>{
         console.log("error", error);
         }
 }
-
-
-
