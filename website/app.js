@@ -23,8 +23,9 @@ function performAction(e){
         console.log(data)
       // Add data to POST request
       postData('/add', {temp:data.main.temp, date:newDate, input:feelings});
+      // Update UI
+      updateUI()
     })
-
 }
 
 /* Function to GET Web API Data*/
@@ -66,3 +67,19 @@ const postData = async ( url = '', data = {})=>{
         console.log("error", error);
         }
 }
+
+// Update UI
+
+const updateUI = async () => {
+    const request = await fetch('/all');
+    try{
+      const allData = await request.json();
+      console.log(allData);
+      document.getElementById('date').innerHTML = allData[0].date;
+      document.getElementById('temp').innerHTML = allData[0].temp;
+      document.getElementById('content').innerHTML = allData[0].input;
+  
+    }catch(error){
+      console.log("error", error);
+    }
+  }

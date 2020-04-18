@@ -42,7 +42,8 @@ function listening() {
 // Callback function to complete GET '/all'
 
 app.get('/all', function (req, res) {
-    res.send(projectData);
+    res.send(weatherData);
+    console.log(weatherData);
 })
 
 // Post Route
@@ -61,7 +62,7 @@ function addData (res, req) {
     }
     console.log('Posted data = ' + newEntry[0]);
 
-    projectData.push(newEntry)
+    weatherData.push(newEntry)
     res.send(weatherData);
     console.log(weatherData)
 }
