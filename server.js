@@ -52,13 +52,13 @@ const weatherData =[];
 
 app.post('/add', addData);
 
-function addData (res, req) {
+function addData (req, res) {
     console.log(req.body)
     let newEntry = {
-        temp: req.body.main.temp,
+        temp: req.body.temp,
         date: req.body.date,
         input: req.body.input,
-        zip: req.body.zip
+        //zip: req.body.zip
     }
     console.log('Posted data = ' + newEntry[0]);
 
